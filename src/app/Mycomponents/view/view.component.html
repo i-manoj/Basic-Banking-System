@@ -1,0 +1,63 @@
+<div>
+  <div class="card" style="width: 100%; text-align: center; background-color: wheat;">
+    <img class="card-img-top" src="assets\dpicon.png" alt="Card image"
+      style="height: 50px; width: 50px; border-radius: 35px; margin-left: 650px;">
+    <div class="card-body" style="background-color: wheat;">
+      <h4 class="card-title">Its me</h4>
+      <p class="card-text">Balance: {{mybal}}</p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <table class="styled-table" style="text-align: center;">
+    <caption></caption>
+    <thead>
+      <tr>
+        <th scope="col">Sr no.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email id</th>
+        <th scope="col">Balance</th>
+        <th scope="col">Send money</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of arr">
+        <td>{{i.id}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.bal}}</td>
+
+
+        <td><button class="btn btn-success" (click)="openModal(i)">Send</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div style="background-color: lightblue;" class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Send money to <span style="color: orangered; text-decoration:solid;">{{name}}</span>
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post"
+          style="background-color: lightblue; text-align: center; margin-top: 2px; margin-bottom: 2px;">
+
+          <input type="text" name="enteramount" id="enteramount" style="margin-top: 5px;" placeholder="Enter amount" [(ngModel)]="enteramount"><br><br>
+          <button type="button" (click)="send()">Send</button>
+          <h1>{{enteramount}}</h1>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="onCloseHandled()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
